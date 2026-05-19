@@ -35,13 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PlaybackActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BrowseErrorActivity"
+            android:name=".AntsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -1,18 +1,16 @@
 // MainActivity.kt
 package com.example.androidactivityapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -25,27 +23,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-class MainActivity : ComponentActivity() {
+open class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainScreen()
+            MainScreen(this)   // Pass the Activity context
         }
     }
 }
 
 @Composable
-fun MainScreen() {
+fun MainScreen(activity: MainActivity) {   // Receive context here
     val colors = listOf(
-        Color.Red,
-        Color.Blue,
-        Color.Green,
-        Color.Yellow,
-        Color.Magenta,
-        Color.LightGray,
-        Color.Gray,
-        Color.Cyan,
-        Color.Magenta
+        Color.Red, Color.Blue, Color.Green,
+        Color.Yellow, Color.DarkGray, Color.LightGray,
+        Color.Gray, Color.Cyan, Color.Magenta
     )
 
     Column(
@@ -66,7 +58,12 @@ fun MainScreen() {
                         val index = row * 3 + col
                         ColoredButton(
                             color = colors[index],
-                            onClick = { /* Navigation logic goes here */ }
+                            onClick = {
+                                if (index == 0) { // Red button
+                                    val intent = Intent(activity, AntsActivity::class.java)
+                                    activity.startActivity(intent)
+                                }
+                            }
                         )
                     }
                 }
@@ -105,5 +102,5 @@ fun ColoredButton(
 @Preview(showSystemUi = true)
 @Composable
 fun MainScreenPreview() {
-    MainScreen()
+    MainScreen(activity = object : MainActivity() {}) // For preview only
 }

@@ -63,6 +63,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     annotationProcessor(libs.glide)
     implementation(libs.androidx.material3)
+    implementation(libs.coil.compose)
 }
 
 
