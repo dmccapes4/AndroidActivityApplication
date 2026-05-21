@@ -59,9 +59,15 @@ fun MainScreen(activity: MainActivity) {   // Receive context here
                         ColoredButton(
                             color = colors[index],
                             onClick = {
-                                if (index == 0) { // Red button
-                                    val intent = Intent(activity, AntsActivity::class.java)
-                                    activity.startActivity(intent)
+                                when (index) {
+                                    0 -> { // Red button
+                                        val intent = Intent(activity, AntsActivity::class.java)
+                                        activity.startActivity(intent)
+                                    }
+                                    1 -> { // Blue button
+                                        val intent = Intent(activity, WindActivity::class.java)
+                                        activity.startActivity(intent)
+                                    }
                                 }
                             }
                         )
