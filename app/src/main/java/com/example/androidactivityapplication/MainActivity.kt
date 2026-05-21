@@ -68,6 +68,10 @@ fun MainScreen(activity: MainActivity) {   // Receive context here
                                         val intent = Intent(activity, WindActivity::class.java)
                                         activity.startActivity(intent)
                                     }
+                                    2 -> { // Green button
+                                        val intent = Intent(activity, TabActivity::class.java)
+                                        activity.startActivity(intent)
+                                    }
                                 }
                             }
                         )
