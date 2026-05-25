@@ -345,7 +345,7 @@ private suspend fun fetchWeather(city: String, isCelsius: Boolean): WeatherInfo 
  * Junior: In a massive project, you'd use a library like Retrofit or Ktor.
  * But knowing how to do it with standard Java/Kotlin is GREAT for interviews.
  */
-private fun readUrl(urlPath: String): String {
+fun readUrl(urlPath: String): String {
     val url = URL(urlPath)
     val connection = url.openConnection() as HttpURLConnection
     return try {

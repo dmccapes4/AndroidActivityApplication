@@ -105,6 +105,10 @@ fun MainScreen(activity: MainActivity) {
                                         val intent = Intent(activity, WeatherActivity::class.java)
                                         activity.startActivity(intent)
                                     }
+                                    5 -> { // button: Open NewsActivity
+                                        val intent = Intent(activity, NewsActivity::class.java)
+                                        activity.startActivity(intent)
+                                    }
                                 }
                             }
                         )
