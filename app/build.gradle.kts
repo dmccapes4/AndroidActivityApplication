@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -64,6 +65,7 @@ dependencies {
     annotationProcessor(libs.glide)
     implementation(libs.androidx.material3)
     implementation(libs.coil.compose)
+    implementation(libs.kotlinx.serialization.json)
 }
 
 

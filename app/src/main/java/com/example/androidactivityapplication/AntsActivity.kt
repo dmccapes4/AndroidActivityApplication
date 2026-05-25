@@ -1,5 +1,6 @@
 package com.example.androidactivityapplication
 
+// Standard Android and Compose imports for UI and lifecycle management
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,47 +18,67 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberAsyncImagePainter
 
+/**
+ * AntsActivity is a simple activity that displays educational information about ants.
+ */
 class AntsActivity : ComponentActivity() {
+    /**
+     * Called when the activity is starting. This is where most initialization 
+     * should go: calling setContent(Composable) to define the UI.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            // Set the UI content to the AntsActivityContent Composable
             AntsActivityContent()
         }
     }
 }
 
+/**
+ * AntsActivityContent defines the layout for the activity using Jetpack Compose.
+ */
 @Composable
 fun AntsActivityContent() {
+    // Surface provides a background color and can handle elevation (shadows)
     Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        modifier = Modifier.fillMaxSize(), // Make the surface fill the entire screen
+        color = MaterialTheme.colorScheme.background // Use the theme's background color
     ) {
+        // Column stacks its children vertically.
         Column(modifier = Modifier.fillMaxSize()) {
 
-            // Top Half: Ants Image (from internet)
+            /**
+             * Top Half: Image Section
+             * We use a Box with weight(1f) to take up exactly half of the vertical space.
+             */
             Box(
                 modifier = Modifier
-                    .weight(1f)
+                    .weight(1f) // Give this box equal weight compared to the bottom section
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center
             ) {
+                // Image displays a drawable resource
                 Image(
-                    painter = painterResource(id = R.drawable.ants),
-                    contentDescription = "Ants Image",
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop
+                    painter = painterResource(id = R.drawable.ants), // Load 'ants' from res/drawable
+                    contentDescription = "Ants Image", // Accessibility description
+                    modifier = Modifier.fillMaxSize(), // Make image fill the Box container
+                    contentScale = ContentScale.Crop // Crop the image to fit the container without distortion
                 )
             }
 
-            // Bottom Half: Educational Text
+            /**
+             * Bottom Half: Educational Text Section
+             * Another Box with weight(1f) to occupy the remaining half of the screen.
+             */
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .padding(20.dp),
+                    .padding(20.dp), // Add inner spacing around the text
                 contentAlignment = Alignment.TopStart
             ) {
+                // Text Composable used to display a multi-line string with educational facts
                 Text(
                     text = """
                         Ants are among the most successful insects on Earth. 
@@ -71,8 +92,8 @@ fun AntsActivityContent() {
                         
                         There are over 12,000 known species of ants, and they play a vital role in ecosystems as decomposers and predators.
                     """.trimIndent(),
-                    fontSize = 16.sp,
-                    lineHeight = 24.sp,
+                    fontSize = 16.sp, // Set font size in sp (scalable pixels)
+                    lineHeight = 24.sp, // Set spacing between lines
                     fontWeight = FontWeight.Normal,
                     textAlign = TextAlign.Start
                 )
