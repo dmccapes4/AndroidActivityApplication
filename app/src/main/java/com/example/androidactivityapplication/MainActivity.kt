@@ -23,6 +23,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.androidactivityapplication.database.ClinicalDatabase
+import jakarta.inject.Inject
 
 /**
  * MainActivity serves as the entry point of the application.
@@ -34,6 +36,9 @@ open class MainActivity : ComponentActivity() {
      * onCreate is the first lifecycle method called when the activity is created.
      * We use setContent to define the UI layout using Compose functions.
      */
+    @Inject
+    lateinit var clinicalDatabase: ClinicalDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
